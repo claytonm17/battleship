@@ -23,6 +23,4 @@ class Ship {
     }
 }
 
-class Gameboard {
-
-}
+export default Ship;

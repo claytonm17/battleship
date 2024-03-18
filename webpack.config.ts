@@ -20,6 +20,11 @@ export default {
         use: 'ts-loader', 
         exclude: /node_modules/,
       },
+      {
+        test: /\.(js|jsx|ts|tsx)$/,
+        exclude: /node_modules/,
+        use: 'babel-loader',
+      },
     ],
   },
 };
