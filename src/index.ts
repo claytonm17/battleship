@@ -3,6 +3,16 @@ class Ship {
     hits : number;
     sunk : boolean;
 
+    constructor(
+        length : number, 
+        hits : number = 0, 
+        sunk : boolean = false
+        ) {
+        this.length = length;
+        this.hits = hits;
+        this.sunk = sunk;
+    }
+
     hit() {
         this.hits += 1;
         if (this.hits === this.length) this.isSunk();
@@ -13,7 +23,6 @@ class Ship {
     }
 }
 
-const carrier = new Ship;
-carrier.length = 5;
-carrier.hits = 0;
-carrier.sunk = false;
+class Gameboard {
+
+}
