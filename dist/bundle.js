@@ -15,7 +15,7 @@
   \**********************/
 /***/ (() => {
 
-eval("var Ship = /** @class */ (function () {\n    function Ship(length, hits, sunk) {\n        if (hits === void 0) { hits = 0; }\n        if (sunk === void 0) { sunk = false; }\n        this.length = length;\n        this.hits = hits;\n        this.sunk = sunk;\n    }\n    Ship.prototype.hit = function () {\n        this.hits += 1;\n        if (this.hits === this.length)\n            this.isSunk();\n    };\n    Ship.prototype.isSunk = function () {\n        this.sunk = true;\n    };\n    return Ship;\n}());\nvar carrier = new Ship(5);\nconsole.log(carrier);\nvar Gameboard = /** @class */ (function () {\n    function Gameboard() {\n    }\n    return Gameboard;\n}());\n\n\n//# sourceURL=webpack://battleship/./src/index.ts?");
+eval("var Ship = /** @class */ (function () {\n    function Ship() {\n    }\n    Ship.prototype.hit = function () {\n        this.hits += 1;\n        if (this.hits === this.length)\n            this.isSunk();\n    };\n    Ship.prototype.isSunk = function () {\n        this.sunk = true;\n    };\n    return Ship;\n}());\nvar carrier = new Ship;\ncarrier.length = 5;\ncarrier.hits = 0;\ncarrier.sunk = false;\nconsole.log(carrier);\ncarrier.hit();\ncarrier.hit();\ncarrier.hit();\ncarrier.hit();\nconsole.log(carrier);\ncarrier.hit();\nconsole.log(carrier);\n\n\n//# sourceURL=webpack://battleship/./src/index.ts?");
 
 /***/ })
 
