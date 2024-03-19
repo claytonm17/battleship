@@ -5,7 +5,7 @@ import webpack from 'webpack';
 
 export default {
   mode: 'development',
-  entry: './src/index.ts',
+  entry: './src/modules/index.ts',
   output: {
     path: path.resolve(__dirname, 'dist'),
     filename: 'bundle.js',

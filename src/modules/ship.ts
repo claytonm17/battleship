@@ -2,15 +2,22 @@ class Ship {
     length : number;
     hits : number;
     sunk : boolean;
+    origin : [number, number];
+    rotated : boolean; 
 
     constructor(
         length : number, 
+        origin : [number, number] = [0, 0], // x,y
+        rotated : boolean = true, // TRUE = x axis, false = y axis
         hits : number = 0, 
-        sunk : boolean = false
+        sunk : boolean = false,
         ) {
+
         this.length = length;
         this.hits = hits;
         this.sunk = sunk;
+        this.origin = origin;
+        this.rotated = rotated;
     }
 
     hit() {

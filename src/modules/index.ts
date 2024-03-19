@@ -1,5 +1,6 @@
-const testing = () => {
-    return true;
-}
+import Gameboard from "./gameboard";
 
-export default testing;
+const playerBoard = new Gameboard
+console.log(playerBoard.board)
+playerBoard.receiveAttack(5,2)
+console.log(playerBoard.board)
