@@ -6,10 +6,24 @@ class Gameboard {
 
     placeShip(
         length : number,
-        origin : [number, number],
+        origin : [number, number],  // Y, X ?
+        xRotated : boolean, // TRUE = X-axis, FALSE = Y-axis
         ) {
-            const battleship = new Ship(length, origin);
+            const battleship = new Ship(length, origin, xRotated);
             
+            this.board[origin[0]][origin[1]] = true;
+
+            if (xRotated) {
+                for (let i = 0; i < length; i++) {
+                    this.board[origin[0]][origin[1] + i] = true
+                }
+            } else {
+                for (let i = 0; i < length; i++) {
+                    this.board[origin[0] + i][origin[1]] = true
+                }
+            }
+
+            //return this.board[0];
         }
 
     receiveAttack(x : number, y : number) {

@@ -14,9 +14,9 @@
 /*!**********************************!*\
   !*** ./src/modules/gameboard.ts ***!
   \**********************************/
-/***/ ((__unused_webpack_module, exports) => {
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
 
-eval("\nexports.__esModule = true;\nvar Gameboard = /** @class */ (function () {\n    function Gameboard() {\n        this.board = Array.from({\n            length: 10\n        }, function () { return Array(10).fill(false); });\n    }\n    Gameboard.prototype.receiveAttack = function (x, y) {\n        this.board[y][x] = true;\n    };\n    return Gameboard;\n}());\nexports[\"default\"] = Gameboard;\n\n\n//# sourceURL=webpack://battleship/./src/modules/gameboard.ts?");
+eval("\nvar __importDefault = (this && this.__importDefault) || function (mod) {\n    return (mod && mod.__esModule) ? mod : { \"default\": mod };\n};\nexports.__esModule = true;\nvar ship_1 = __importDefault(__webpack_require__(/*! ./ship */ \"./src/modules/ship.ts\"));\nvar Gameboard = /** @class */ (function () {\n    function Gameboard() {\n        this.board = Array.from({\n            length: 10\n        }, function () { return Array(10).fill(false); });\n    }\n    Gameboard.prototype.placeShip = function (length, origin) {\n        var battleship = new ship_1[\"default\"](length, origin);\n    };\n    Gameboard.prototype.receiveAttack = function (x, y) {\n        // X and Y from top left corner\n    };\n    return Gameboard;\n}());\nexports[\"default\"] = Gameboard;\n\n\n//# sourceURL=webpack://battleship/./src/modules/gameboard.ts?");
 
 /***/ }),
 
@@ -27,6 +27,16 @@ eval("\nexports.__esModule = true;\nvar Gameboard = /** @class */ (function () {
 /***/ (function(__unused_webpack_module, exports, __webpack_require__) {
 
 eval("\nvar __importDefault = (this && this.__importDefault) || function (mod) {\n    return (mod && mod.__esModule) ? mod : { \"default\": mod };\n};\nexports.__esModule = true;\nvar gameboard_1 = __importDefault(__webpack_require__(/*! ./gameboard */ \"./src/modules/gameboard.ts\"));\nvar playerBoard = new gameboard_1[\"default\"]();\nconsole.log(playerBoard.board);\nplayerBoard.receiveAttack(5, 2);\nconsole.log(playerBoard.board);\n\n\n//# sourceURL=webpack://battleship/./src/modules/index.ts?");
+
+/***/ }),
+
+/***/ "./src/modules/ship.ts":
+/*!*****************************!*\
+  !*** ./src/modules/ship.ts ***!
+  \*****************************/
+/***/ ((__unused_webpack_module, exports) => {
+
+eval("\nexports.__esModule = true;\nvar Ship = /** @class */ (function () {\n    function Ship(length, origin, \n    // x,y\n    rotated, \n    // TRUE = x axis, false = y axis\n    hits, sunk) {\n        if (origin === void 0) { origin = [0, 0]; }\n        if (rotated === void 0) { rotated = true; }\n        if (hits === void 0) { hits = 0; }\n        if (sunk === void 0) { sunk = false; }\n        this.length = length;\n        this.hits = hits;\n        this.sunk = sunk;\n        this.origin = origin;\n        this.rotated = rotated;\n    }\n    Ship.prototype.hit = function () {\n        this.hits += 1;\n        if (this.hits === this.length)\n            this.isSunk();\n    };\n    Ship.prototype.isSunk = function () {\n        this.sunk = true;\n    };\n    return Ship;\n}());\nexports[\"default\"] = Ship;\n\n\n//# sourceURL=webpack://battleship/./src/modules/ship.ts?");
 
 /***/ })
 
