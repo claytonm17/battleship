@@ -38,7 +38,7 @@ class Gameboard {
             return null; // Cannot attack same spot twice
         }
         this.attackedSpots.push(attackCoordinates);  // Keep track of attacked spots
-        console.log(this.attackedSpots);
+        //console.log(this.attackedSpots);
         for (let i = 0; i < this.ships.length; i++) {
             if (this.ships[i].isHit(x, y)) {
                 this.ships[i].hit();

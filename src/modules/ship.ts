@@ -1,4 +1,5 @@
 class Ship {
+    
     length : number;
     hits : number;
     sunk : boolean;
