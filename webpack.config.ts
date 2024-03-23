@@ -1,7 +1,5 @@
 import path from 'path';
 import webpack from 'webpack';
-// in case you run into any typescript error when configuring `devServer`
-//import 'webpack-dev-server';
 
 export default {
   mode: 'development',
@@ -16,15 +14,20 @@ export default {
   module: {
     rules: [
       {
-        test: /\.ts$/, 
-        use: 'ts-loader', 
+        test: /\.ts$/,
+        use: 'ts-loader',
         exclude: /node_modules/,
       },
       {
-        test: /\.(js|jsx|ts|tsx)$/,
+        test: /\.(js|jsx)$/,
         exclude: /node_modules/,
         use: 'babel-loader',
       },
     ],
+  },
+  devServer: {
+    contentBase: path.join(__dirname, 'dist'),
+    compress: true,
+    port: 9000,
   },
 };
