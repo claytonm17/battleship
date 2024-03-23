@@ -1,6 +1,2 @@
-import Gameboard from "./gameboard";
+import Player from "./player";
 
-const playerBoard = new Gameboard
-console.log(playerBoard.board)
-playerBoard.receiveAttack(5,2)
-console.log(playerBoard.board)

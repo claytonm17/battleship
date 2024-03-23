@@ -1,5 +1,5 @@
 class Ship {
-    
+
     length : number;
     hits : number;
     sunk : boolean;
@@ -20,6 +20,20 @@ class Ship {
         this.rotated = rotated;
     }
 
+    // For testing
+    getHits() {
+        return this.hits;
+    }
+    getSunkStatus() {
+        return this.sunk;
+    }
+    getLength() {
+        return this.length;
+    }
+    getOrigin() {
+        return this.origin;
+    }
+
     // Need to make this a function that return true IF coords are held by ship
     isHit(x: number, y: number): boolean {
         const [shipX, shipY] = this.origin;
@@ -31,13 +45,17 @@ class Ship {
         }
     }
 
-    hit() {
+    hit(): boolean {
         this.hits += 1;
         //console.log(`Ship Length ${this.length} was hit!`);
-        if (this.hits === this.length) this.isSunk();
+        if (this.hits === this.length) {
+            this.isSunk();
+            return true;
+        } 
+        return false;
     }
 
-    isSunk() {
+    isSunk(): void {
         this.sunk = true;
     }
 }

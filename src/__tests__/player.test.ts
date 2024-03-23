@@ -74,3 +74,17 @@ test("Player can place ship then have it attacked by computer", () => {
     computer.board.receiveAttack(pAttack[0], pAttack[1]);
     expect(player.board.receiveAttack(cAttack[0], cAttack[1])).toBe(true);
 })
+
+test('randomAttack does not attack the same place twice', () => {
+    const computer = new Player("CPU");
+    const attackedCoordinates: string[] = [];
+
+    for (let i = 0; i < 100; i++) {
+        const [x, y] = computer.randomAttack();
+        const coordinate = `${x},${y}`;
+        
+        expect(attackedCoordinates).not.toContain(coordinate);
+        
+        attackedCoordinates.push(coordinate);
+    }
+});
