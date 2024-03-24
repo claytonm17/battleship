@@ -5,8 +5,8 @@ class Player {
     board: Gameboard;
     name: string;
 
-    constructor(name: string) {
-        this.board = new Gameboard;
+    constructor(name: string, board: Gameboard) {
+        this.board = board;
         this.name = name;
     }
 
@@ -14,6 +14,7 @@ class Player {
         return [x, y];
     }
 
+    // Change to separate list
     randomAttack() {
         do {
         const x = Math.floor(Math.random() * 10);
@@ -21,7 +22,7 @@ class Player {
 
         const coordinates = `${x},${y}`;
         if (!this.board.attackedSpots.includes(coordinates)) {
-            this.board.attackedSpots.push(`${x},${y}`);
+            this.board.attackedSpots.push(`[${x},${y}]`);
             return [x, y];
         }
     } while(true);

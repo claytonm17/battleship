@@ -5,7 +5,13 @@ class Gameboard {
     board : boolean[][] = Array.from({ length : 10}, () => Array(10).fill(false))
     ships : Ship[] = [];
 
-    attackedSpots: string[] = [];
+    attackedSpots: string[];
+
+    constructor() {
+        this.attackedSpots = []
+    }
+
+    // Fix the scope of these variables
     missedAttacks: number[][] = [];
     hitAttacks: number[][] = [];
 

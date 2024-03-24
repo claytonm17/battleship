@@ -1,12 +1,15 @@
+import Gameboard from "../modules/gameboard";
 import Player from "../modules/player";
 
 test("Gameboard should be initialized with no hits", () => {
-    const player = new Player('human');
+    const pboard = new Gameboard;
+    const player = new Player('human', pboard);
     expect(player.board.attackedSpots).toStrictEqual([]);
 })
 
 test("Player can place ship in specific spot", () => {
-    const player = new Player('human');
+    const pboard = new Gameboard;
+    const player = new Player('human', pboard);
     player.board.placeShip(5, [1, 2], true); // Length 5, origin [1,2], X axis
     expect(player.board.board).toStrictEqual(
         [
@@ -25,8 +28,10 @@ test("Player can place ship in specific spot", () => {
 })
 
 test("Two players can both place ships on their boards", () => {
-    const player = new Player('Human');
-    const computer = new Player('Computer');
+    const pboard = new Gameboard;
+    const cboard = new Gameboard;
+    const player = new Player('Human', pboard);
+    const computer = new Player('Computer', cboard);
 
     player.board.placeShip(5, [1, 2], true);
     computer.board.placeShip(3, [0,0], false);
@@ -62,8 +67,10 @@ test("Two players can both place ships on their boards", () => {
 })
 
 test("Player can place ship then have it attacked by computer", () => {
-    const player = new Player('human');
-    const computer = new Player('Computer');
+    const pboard = new Gameboard;
+    const cboard = new Gameboard;
+    const player = new Player('human', pboard);
+    const computer = new Player('Computer', cboard);
 
     player.board.placeShip(3, [0,2], true);
     computer.board.placeShip(2, [0,0], true);
@@ -76,7 +83,8 @@ test("Player can place ship then have it attacked by computer", () => {
 })
 
 test('randomAttack does not attack the same place twice', () => {
-    const computer = new Player("CPU");
+    const cboard = new Gameboard;
+    const computer = new Player("CPU", cboard);
     const attackedCoordinates: string[] = [];
 
     for (let i = 0; i < 100; i++) {
