@@ -4,16 +4,17 @@ class Gameboard {
 
     board : boolean[][] = Array.from({ length : 10}, () => Array(10).fill(false))
     ships : Ship[] = [];
-
-    attackedSpots: string[];
+    attackedSpots: string[] = [];
+    missedAttacks: number[][] = [];
+    hitAttacks: number[][] = [];
 
     constructor() {
-        this.attackedSpots = []
+        this.attackedSpots = [];
+        this.missedAttacks = [];
+        this.hitAttacks = [];
     }
 
     // Fix the scope of these variables
-    missedAttacks: number[][] = [];
-    hitAttacks: number[][] = [];
 
     placeShip(
         length : number,
@@ -44,7 +45,8 @@ class Gameboard {
             return null; // Cannot attack same spot twice
         }
         this.attackedSpots.push(attackCoordinates);  // Keep track of attacked spots
-        //console.log(this.attackedSpots);
+        //console.log(`${attackCoordinates} pushed to ${this.board}`)
+        //console.log(`Adding ${attackCoordinates} to attacked spots`)
         for (let i = 0; i < this.ships.length; i++) {
             if (this.ships[i].isHit(x, y)) {
                 this.ships[i].hit();
