@@ -44,7 +44,7 @@ const p2patrol = p2.board.placeShip(2, [0, 4], true);
 //console.log(p2.board)
 
 // MAIN GAME LOOP
-for (let i = 0; i < 20; i++){
+for (let i = 0; i < 100; i++){
     // P1 attack on p2
     let p1attack = p1.randomAttack();
     p2.board.receiveAttack(p1attack[0], p1attack[1]);
@@ -65,8 +65,25 @@ function shipSunkCheck(player, index: number): number {
     return sunkShips;
 }
 
-function gameWinCondition() {
-    
+function gameWinCondition() { //check
+    let p1sunkShips = 0;
+    let p2sunkShips = 0;
+    for (let i = 0; i < p1.board.ships.length; i++) {
+        if (p1.board.ships[i].getSunkStatus()) {
+            p1sunkShips += 1;
+        }
+        if (p2.board.ships[i].getSunkStatus()) {
+            p2sunkShips += 1;
+        }
+    }
+    if (p1sunkShips === 5) {
+        console.log("P2 Wins!");
+        return "P2 Win";
+    }
+    if (p2sunkShips === 5) {
+        console.log("P1 Wins!");
+        return "P1 Win";
+    }
 }
 
 function parseCoordinates(coordinates: string): number[] {
