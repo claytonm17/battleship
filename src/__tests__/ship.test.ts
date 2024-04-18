@@ -1,40 +1,33 @@
 import Ship from "../modules/ship";
 
-test("Expect ship to have 0 hits by default", () => {
-    const carrier = new Ship(5); // length of 5
-    expect(carrier.getHits()).toBe(0);
+test("Expect ship to have 0 hits by default and to not be sunk", () => {
+    const carrier = new Ship(5, [0,0]);
+    expect(carrier.length).toBe(5);
+    expect(carrier.sunk).toBe(false);
 });
 
-test("Expect ship to be floating (not sunk)", () => {
-    const carrier = new Ship(5);
-    expect(carrier.getSunkStatus()).toBe(false);
+test("Expect ship to have lower health when hit", () => {
+    const battleship = new Ship(4, [1,3]);
+    battleship.hit();
+    expect(battleship.health).toBe(3);
 });
 
-test("Expect ship of length 5 should be not sunk in 4 hits", () => {
-    const carrier = new Ship(5);
-    carrier.hit();
-    carrier.hit();
-    carrier.hit();
-    carrier.hit();
-    expect(carrier.getSunkStatus()).toBe(false);
+test("Expect ship to not be sunk after being hit once", () => {
+    const lightCruiser = new Ship(2, [1,3]);
+    lightCruiser.hit();
+    expect(lightCruiser.sunk).toBe(false);
 });
 
-test("Expect ship of length 5 should be sunk in 5 hits", () => {
-    const carrier = new Ship(5);
-    carrier.hit();
-    carrier.hit();
-    carrier.hit();
-    carrier.hit();
-    carrier.hit();
-    expect(carrier.getSunkStatus()).toBe(true);
+test("Expect ship to be sunk after being hit full length", () => {
+    const battleship = new Ship(4, [1,3]);
+    console.log(battleship.health)
+    battleship.hit();
+    console.log(battleship.health)
+    battleship.hit();
+    console.log(battleship.health)
+    battleship.hit();
+    console.log(battleship.health)
+    battleship.hit();
+    console.log(battleship.health)
+    expect(battleship.isSunk()).toBe(true);
 });
-
-test("Can create ships of various lengths", () => {
-    const patrol = new Ship(2);
-    expect(patrol.getLength()).toBe(2);
-})
-
-test("Can move origin of ship", () => {
-    const patrol = new Ship(2, [4, 4]);
-    expect(patrol.getOrigin()).toStrictEqual([4, 4]);
-})

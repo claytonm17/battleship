@@ -1,62 +1,34 @@
 class Ship {
-
-    length : number;
-    hits : number;
-    sunk : boolean;
-    origin : [number, number];
-    rotated : boolean; 
+    length: number;
+    health: number;
+    origin: [number, number];
+    direction: string; // "V" or "H"
+    sunk: boolean;
 
     constructor(
-        length : number, 
-        origin : [number, number] = [0, 0], // X,Y
-        rotated : boolean = true, // TRUE = x axis, false = y axis
-        hits : number = 0, 
-        sunk : boolean = false,
-        ) {
+        length: number, 
+        origin: [number, number],
+        direction: string = "V",
+        sunk: boolean = false, // not sunk by default
+    ) {
         this.length = length;
-        this.hits = hits;
-        this.sunk = sunk;
+        this.health = length;
         this.origin = origin;
-        this.rotated = rotated;
+        this.direction = direction;
+        this.sunk = sunk;
     }
 
-    // For testing
-    getHits() {
-        return this.hits;
-    }
-    getSunkStatus() {
-        return this.sunk;
-    }
-    getLength() {
-        return this.length;
-    }
-    getOrigin() {
-        return this.origin;
+    // Decreases the health of the ship
+    hit() {
+        this.health -= 1;
     }
 
-    // Need to make this a function that return true IF coords are held by ship
-    isHit(x: number, y: number): boolean {
-        const [shipX, shipY] = this.origin;
-
-        if (this.rotated) {
-            return y === shipY && x >= shipX && x < shipX + this.length;
-        } else {
-            return x === shipX && y >= shipY && y < shipY + this.length;
+    isSunk() {
+        if (this.health === 0) {
+            this.sunk = true;
+            return this.sunk;
         }
-    }
-
-    hit(): boolean {
-        this.hits += 1;
-        //console.log(`Ship Length ${this.length} was hit!`);
-        if (this.hits === this.length) {
-            this.isSunk();
-            return true;
-        } 
-        return false;
-    }
-
-    isSunk(): void {
-        this.sunk = true;
+        return this.sunk;
     }
 }
 
