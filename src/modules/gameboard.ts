@@ -11,6 +11,9 @@ class Gameboard {
             
             for (let i = 0; i < ship.length; i++) {
                 // Add check to confirm no other ship in spot
+                if (this.board[ship.origin[1] + i][ship.origin[0]] !== 0) {
+                    return null
+                }
                 this.board[ship.origin[1] + i][ship.origin[0]] = ship.id;
             }
             this.ships.push(ship);
@@ -18,6 +21,9 @@ class Gameboard {
         else if (ship.direction === "H") {
 
             for (let i = 0; i < ship.length; i++) {
+                if (this.board[ship.origin[1] + i][ship.origin[0]] !== 0) {
+                    return null
+                }
                 this.board[ship.origin[1]][ship.origin[0] + i] = ship.id;
             }
             this.ships.push(ship);

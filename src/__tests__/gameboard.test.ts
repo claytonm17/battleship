@@ -142,3 +142,25 @@ test("Can add all 5 ships", () => {
         ]
     )
 });
+
+test("Cannot place overlapping ships", () => {
+    const board = new Gameboard;
+    const carrier = new Ship(1, 5, [0,0], "V");
+    const battleship = new Ship(2, 4, [0,0], "H");
+    board.placeShip(carrier);
+    expect(board.placeShip(battleship)).toBe(null);
+    expect(board.board).toStrictEqual(
+        [
+            [1, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            [1, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            [1, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            [1, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            [1, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        ]
+    )
+});
