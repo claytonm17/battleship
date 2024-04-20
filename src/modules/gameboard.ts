@@ -3,20 +3,24 @@ import Ship from "./ship";
 class Gameboard {
     
     board: number[][] = Array.from({ length : 10}, () => Array(10).fill(0))
+    ships: Ship[] = [];
 
     placeShip(ship: Ship) {
 
         if (ship.direction === "V") {
             
             for (let i = 0; i < ship.length; i++) {
+                // Add check to confirm no other ship in spot
                 this.board[ship.origin[1] + i][ship.origin[0]] = ship.id;
             }
+            this.ships.push(ship);
         } 
         else if (ship.direction === "H") {
 
             for (let i = 0; i < ship.length; i++) {
                 this.board[ship.origin[1]][ship.origin[0] + i] = ship.id;
             }
+            this.ships.push(ship);
         }
     }
 

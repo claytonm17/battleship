@@ -99,3 +99,46 @@ test("Be able to attack a spot and miss", () => {
         ]
     )
 })
+
+test("When ships are added to the board, expect the ships list to contain them", () => {
+    const board = new Gameboard
+    const carrier = new Ship(1, 5, [0,0], "H");
+    const battleship = new Ship(2, 4, [0,1], "H");
+    const submarine = new Ship(3, 3, [0,2], "H");
+    const cruiser = new Ship(4, 3, [0,3], "H");
+    const destroyer = new Ship(5, 2, [0,4], "H");
+    board.placeShip(carrier);
+    board.placeShip(battleship);
+    board.placeShip(submarine);
+    board.placeShip(cruiser);
+    //board.placeShip(destroyer);
+    expect(board.ships.length).toBe(4)
+});
+
+test("Can add all 5 ships", () => {
+    const board = new Gameboard
+    const carrier = new Ship(1, 5, [0,0], "H");
+    const battleship = new Ship(2, 4, [0,1], "H");
+    const submarine = new Ship(3, 3, [0,2], "H");
+    const cruiser = new Ship(4, 3, [0,3], "H");
+    const destroyer = new Ship(5, 2, [0,4], "H");
+    board.placeShip(carrier);
+    board.placeShip(battleship);
+    board.placeShip(submarine);
+    board.placeShip(cruiser);
+    board.placeShip(destroyer);
+    expect(board.board).toStrictEqual(
+        [
+            [1, 1, 1, 1, 1, 0, 0, 0, 0, 0],
+            [2, 2, 2, 2, 0, 0, 0, 0, 0, 0],
+            [3, 3, 3, 0, 0, 0, 0, 0, 0, 0],
+            [4, 4, 4, 0, 0, 0, 0, 0, 0, 0],
+            [5, 5, 0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        ]
+    )
+});
