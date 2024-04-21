@@ -1,33 +1,21 @@
-import Gameboard from "./gameboard";
+import Ship from "../modules/ship";
+import Gameboard from "../modules/gameboard";
 
 class Player {
 
-    board: Gameboard;
+    gameboard: Gameboard;
     name: string;
 
-    constructor(name: string, board: Gameboard) {
-        this.board = board;
+    constructor(name: string) {
         this.name = name;
+        this.gameboard = new Gameboard;
     }
 
-    manualAttack(x: number, y: number) {
-        return [x, y];
+    attack(coordinates: number[], target: Player) {
+        target.gameboard.receiveAttack(coordinates);
     }
 
-    // Change to separate list
-    randomAttack(): [number, number] {
-        do {
-        const x = Math.floor(Math.random() * 10);
-        const y = Math.floor(Math.random() * 10);
-
-        const coordinates = `${x},${y}`;
-
-        if (!this.board.attackedSpots.includes(coordinates)) {
-            this.board.attackedSpots.push(coordinates);
-            return [x, y];
-        }
-    } while(true);
-    }
+     
 }
 
 export default Player;

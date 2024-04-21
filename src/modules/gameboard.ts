@@ -40,6 +40,13 @@ class Gameboard {
         }
         else if (this.board[coordinates[1]][coordinates[0]] !== EMPTY) {
             // Hit a ship
+            // TAKE HEALTH FROM SHIP HIT
+            for (let i = 0; i < this.ships.length; i++) {
+                if (this.ships[i].id === this.board[coordinates[1]][coordinates[0]]) {
+                    this.ships[i].health -= 1;
+                }
+            }
+
             this.board[coordinates[1]][coordinates[0]] = ATTACKED;
             return true
         }
