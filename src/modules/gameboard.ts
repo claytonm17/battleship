@@ -48,6 +48,16 @@ class Gameboard {
             return false
         }
     }
+
+    checkShipsSunk() {
+        let count = 0;
+        for (let i = 0; i < this.ships.length; i++) {
+            if (this.ships[i].isSunk()) {
+                count += 1
+            }
+        }
+        return (count === this.ships.length);
+    }
 }
 
 export default Gameboard;

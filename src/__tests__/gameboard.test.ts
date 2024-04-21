@@ -164,3 +164,30 @@ test("Cannot place overlapping ships", () => {
         ]
     )
 });
+
+test("Ships do not be detected as sunk with no hits", () => {
+    const board = new Gameboard;
+    const carrier = new Ship(1, 5, [0,0], "H");
+    const battleship = new Ship(2, 4, [0,1], "H");
+    const submarine = new Ship(3, 3, [0,2], "H");
+    const cruiser = new Ship(4, 3, [0,3], "H");
+    const destroyer = new Ship(5, 2, [0,4], "H");
+    board.placeShip(carrier);
+    board.placeShip(battleship);
+    board.placeShip(submarine);
+    board.placeShip(cruiser);
+    board.placeShip(destroyer);
+    expect(board.checkShipsSunk()).toBe(false);
+});
+
+test("Return true if all ships are sunk (win condition)", () => {
+    const board = new Gameboard;
+    const carrier = new Ship(1, 5, [0,0], "H");
+    board.placeShip(carrier);
+    carrier.hit();
+    carrier.hit();
+    carrier.hit();
+    carrier.hit();
+    carrier.hit();
+    expect(board.checkShipsSunk()).toBe(true);
+});
