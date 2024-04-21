@@ -1,5 +1,4 @@
 import path from 'path';
-import webpack from 'webpack';
 
 export default {
   mode: 'development',
@@ -9,7 +8,7 @@ export default {
     filename: 'bundle.js',
   },
   resolve: {
-    extensions: ['.ts', '.js'],
+    extensions: ['.ts', '.js', 'scss'],
   },
   module: {
     rules: [
@@ -23,6 +22,14 @@ export default {
         exclude: /node_modules/,
         use: 'babel-loader',
       },
+      {
+        test: /\.scss$/,
+        use: [
+            'style-loader',  // Injects styles into the DOM
+            'css-loader',    // Resolves CSS imports
+            'sass-loader'    // Compiles Sass/SCSS to CSS
+        ],
+    },
     ],
   },
   devServer: {
