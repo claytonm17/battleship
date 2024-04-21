@@ -196,5 +196,5 @@ test("Be able to attack each other's boards", () => {
         ]
     )
     humanPlayer.attack([5,5], computerPlayer);
-    expect(computerPlayer.gameboard.ships[0].health).toBe(1)
+    expect(computerPlayer.gameboard.ships[0].health).toBe(1);
 });
