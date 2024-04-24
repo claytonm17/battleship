@@ -9,6 +9,7 @@ $dark-text-color: #fefae0;
 body {
     background-color: $dark-background-color;
     color: $dark-text-color;
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
 
 .title {
@@ -24,4 +25,38 @@ body {
     justify-content: center;
     margin: 1em;
     filter: drop-shadow(15px 15px black);
+
+    background: // credit to https://projects.verou.me/css3patterns/#carbon
+    linear-gradient(27deg, #151515 5px, transparent 5px) 0 5px,
+    linear-gradient(207deg, #151515 5px, transparent 5px) 10px 0px,
+    linear-gradient(27deg, #222 5px, transparent 5px) 0px 10px,
+    linear-gradient(207deg, #222 5px, transparent 5px) 10px 5px,
+    linear-gradient(90deg, #1b1b1b 10px, transparent 10px),
+    linear-gradient(#1d1d1d 25%, #1a1a1a 25%, #1a1a1a 50%, transparent 50%, transparent 75%, #242424 75%, #242424);
+    background-color: #131313;
+    background-size: 20px 20px;
+}
+
+.form-container {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+
+    h2 {
+        margin-bottom: 1em;
+        font-weight: 700;
+    }
+
+    .player-name-form {
+
+        filter: drop-shadow(5px 5px black); 
+        border: solid 1px $dark-text-color;
+        
+        input {
+            font-size: 1.5em;
+            padding: 0.5em;
+            background-color: #131313;
+            color: $dark-text-color;
+        }
+    }
 }
