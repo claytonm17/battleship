@@ -51,6 +51,7 @@ body {
 
         filter: drop-shadow(5px 5px black); 
         border: solid 1px $dark-text-color;
+        margin-bottom: 2em;
         
         input {
             font-size: 1.5em;
@@ -58,5 +59,20 @@ body {
             background-color: #131313;
             color: $dark-text-color;
         }
+    }
+}
+
+.game-area {
+    display: flex;
+    justify-content: space-around;
+}
+
+.grid {
+    grid-column-gap: 0px;
+    grid-row-gap: 0px;
+
+    div {
+        padding: 1em;
+        border: 1px red solid;
     }
 }

@@ -8,3 +8,5 @@ import DOM from "./DOM";
 
 DOM.createH1('Battleship', 'title');
 DOM.nameForm("Enter Your Name:");
+
+DOM.gameArea(10, "player", "computer");
