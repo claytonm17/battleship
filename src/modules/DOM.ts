@@ -1,18 +1,20 @@
 const DOM = {
 
-    createH1: (text: string, className: string) => {
+    appendComponent: (component) => {
         const body = document.querySelector('body');
+        body.appendChild(component);
+    },
+
+    createH1: (text: string, className: string) => {
         const h1 = document.createElement('h1');
         h1.textContent = text;
         h1.className = className;
-        body.appendChild(h1);
+        return h1;
     },
 
     nameForm: (title: string) => {
-        const body = document.querySelector('body');
         const container = document.createElement('div');
         container.className = "form-container";
-        body.append(container);
 
         const h2 = document.createElement('h2');
         h2.textContent = title;
@@ -32,6 +34,8 @@ const DOM = {
         const submitInput = document.createElement('input');
         submitInput.type = "submit";
         form.appendChild(submitInput);
+
+        return container;
     },
 
     createGrid: (size: number, name: string) => {
@@ -51,16 +55,14 @@ const DOM = {
     },
 
     gameArea: (size: number, player1: string, player2: string) => {
-        const body = document.querySelector('body');
         const container = document.createElement('div');
         container.className = "game-area"
-
         container.style.display = "flex";
 
         container.appendChild(DOM.createGrid(size, player1))
         container.appendChild(DOM.createGrid(size, player2))
 
-        body.appendChild(container);
+        return container;
     }
 }
 
