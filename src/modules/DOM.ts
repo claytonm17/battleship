@@ -59,8 +59,24 @@ const DOM = {
         container.className = "game-area"
         container.style.display = "flex";
 
-        container.appendChild(DOM.createGrid(size, player1))
-        container.appendChild(DOM.createGrid(size, player2))
+        const p1Container = document.createElement('div');
+        p1Container.className = "player-title";
+        const p1Heading = document.createElement('h3');
+        p1Heading.textContent = player1;
+        p1Container.appendChild(p1Heading);
+
+        const p2Container = document.createElement('div');
+        p2Container.className = "player-title";
+        const p2Heading = document.createElement('h3');
+        p2Heading.textContent = player2;
+        p2Container.appendChild(p2Heading);
+
+        p1Container.appendChild(DOM.createGrid(size, player1))
+        p2Container.appendChild(DOM.createGrid(size, player2))
+
+        container.appendChild(p1Container);
+        container.appendChild(p2Container);
+
 
         return container;
     }

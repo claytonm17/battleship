@@ -9,4 +9,4 @@ import DOM from "./DOM";
 DOM.appendComponent(DOM.createH1('Battleship', 'title'));
 DOM.appendComponent(DOM.nameForm("Enter Your Name:"));
 
-DOM.appendComponent(DOM.gameArea(10, "player", "computer"));
+DOM.appendComponent(DOM.gameArea(10, "Player", "Computer"));

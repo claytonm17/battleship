@@ -65,6 +65,20 @@ body {
 .game-area {
     display: flex;
     justify-content: space-around;
+
+    .player-title {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        h3 {
+            color: $dark-text-color;
+            font-size: 2em;
+            filter: drop-shadow(5px 5px black); 
+            margin-bottom: 1em;
+        }
+
+    }
 }
 
 .grid {
@@ -72,7 +86,7 @@ body {
     grid-row-gap: 0px;
 
     div {
-        padding: 1em;
-        border: 1px red solid;
+        padding: 1.5em;
+        border: 1px $dark-text-color solid;
     }
 }
