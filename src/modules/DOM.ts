@@ -1,3 +1,5 @@
+import Player from "../modules/player";
+
 const DOM = {
 
     appendComponent: (component) => {
@@ -22,7 +24,7 @@ const DOM = {
 
         const form = document.createElement('form');
         form.className = "player-name-form";
-        form.action = "get";
+        //form.action = "get";
         container.appendChild(form);
 
         const textInput = document.createElement('input');
@@ -33,7 +35,19 @@ const DOM = {
 
         const submitInput = document.createElement('input');
         submitInput.type = "submit";
+        submitInput.className = "submit-button";
         form.appendChild(submitInput);
+
+        form.addEventListener('submit', (event) => {
+            event.preventDefault();
+
+            const playerName = textInput.value;
+            console.log(playerName);
+
+            //humanPlayer = new Player(playerName, false);
+        })
+
+
 
         return container;
     },
@@ -77,8 +91,12 @@ const DOM = {
         container.appendChild(p1Container);
         container.appendChild(p2Container);
 
-
         return container;
+    },
+
+    gridHit: (spot: string, name: string) => {
+        const grid = document.querySelector(`#${name}`);
+
     }
 }
 
