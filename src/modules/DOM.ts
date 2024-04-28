@@ -1,8 +1,6 @@
-import Player from "../modules/player";
-
 const DOM = {
 
-    appendComponent: (component) => {
+    appendComponent: (component: HTMLElement) => {
         const body = document.querySelector('body');
         body.appendChild(component);
     },
@@ -37,17 +35,6 @@ const DOM = {
         submitInput.type = "submit";
         submitInput.className = "submit-button";
         form.appendChild(submitInput);
-
-        form.addEventListener('submit', (event) => {
-            event.preventDefault();
-
-            const playerName = textInput.value;
-            console.log(playerName);
-
-            //humanPlayer = new Player(playerName, false);
-        })
-
-
 
         return container;
     },
