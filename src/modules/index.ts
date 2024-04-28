@@ -2,14 +2,18 @@ import './styles/styles.scss';
 
 import DOM from "./DOM"; // Static DOM only
 import eventListeners from "./eventListeners"; // Interactive 
+import Player from './player';
 
 const title = DOM.createH1('Battleship', 'title');
 const nameForm = DOM.nameForm("Enter your name!");
 const grids = DOM.gameArea(10, "player", "computer");
+const controls = DOM.gameControls();
 
 DOM.appendComponent(title);
 DOM.appendComponent(nameForm);
 DOM.appendComponent(grids);
+DOM.appendComponent(controls);
+
 
 eventListeners.placeShipBoardListener();
 
@@ -17,14 +21,11 @@ eventListeners.placeShipBoardListener();
 eventListeners.nameFormListener().then((humanPlayer) => {
     console.log(humanPlayer);
 
-    // Game loop now. Add ships etc. Create computer to play against
 
 
 }).catch((error) => {
     console.log(`Error: ${error}`);
 })
-
-
 
 
 /*

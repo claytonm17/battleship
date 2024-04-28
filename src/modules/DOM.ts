@@ -71,6 +71,7 @@ const DOM = {
         p1Heading.textContent = player1;
         p1Container.appendChild(p1Heading);
 
+
         const p2Container = document.createElement('div');
         p2Container.className = "player-title";
         const p2Heading = document.createElement('h3');
@@ -86,10 +87,47 @@ const DOM = {
         return container;
     },
 
+    gameControls: () => {
+        const container = document.createElement('form');
+        container.className = "controls";
+
+        const orientationH = document.createElement('input');
+        orientationH.type = "radio";
+        orientationH.value = "horizontal";
+        orientationH.id = "horizontal";
+        orientationH.name = "orientation";
+        const labelH = document.createElement('label');
+        labelH.textContent = "Horizontal";
+        labelH.setAttribute("for", "horizontal");
+
+        const orientationV = document.createElement('input');
+        orientationV.type = "radio";
+        orientationV.value = "vertical";
+        orientationV.id = "vertical";
+        orientationV.name = "orientation"; 
+        const labelV = document.createElement('label');
+        labelV.textContent = "Vertical";
+        labelV.setAttribute("for", "vertical");
+
+        const submitButton = document.createElement('input');
+        submitButton.type = "submit";
+        submitButton.value = "Place Ship";
+
+        container.appendChild(orientationH);
+        container.appendChild(labelH);
+        container.appendChild(orientationV);
+        container.appendChild(labelV);
+        container.appendChild(submitButton);
+
+        return container;
+        },
+
     gridHit: (spot: string, name: string) => {
         const grid = document.querySelector(`#${name}`);
 
-    }
+    },
+
+
 }
 
 export default DOM;
