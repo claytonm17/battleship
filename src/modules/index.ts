@@ -1,13 +1,18 @@
 import './styles/styles.scss';
 
 import DOM from "./DOM"; // Static DOM only
-import eventListeners from "../eventListeners"; // Interactive 
+import eventListeners from "./eventListeners"; // Interactive 
 
 const title = DOM.createH1('Battleship', 'title');
 const nameForm = DOM.nameForm("Enter your name!");
+const grids = DOM.gameArea(10, "player", "computer");
 
 DOM.appendComponent(title);
 DOM.appendComponent(nameForm);
+DOM.appendComponent(grids);
+
+eventListeners.placeShipBoardListener();
+
 
 eventListeners.nameFormListener().then((humanPlayer) => {
     console.log(humanPlayer);

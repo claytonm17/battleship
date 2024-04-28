@@ -88,4 +88,8 @@ body {
         padding: 1.5em;
         border: 1px $dark-text-color solid;
     }
+
+    .cell:hover {
+        cursor: pointer;
+    }
 }

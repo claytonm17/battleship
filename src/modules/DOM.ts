@@ -49,7 +49,12 @@ const DOM = {
  
         for (let i = 0; i < size*size; i++) {
             const cell = document.createElement('div');
-            cell.className = `spot${i}`; // Convert into conventional layout (A1, etc)
+            // Puts in same naming convention used in Gameboard class
+            let cellRow = Math.floor(i / 10);
+            let cellCol = i % 10;
+            cell.id = `${cellRow.toString()}-${cellCol.toString()}`;
+            cell.className = "cell";
+            
             grid.appendChild(cell)
         }
         return grid;

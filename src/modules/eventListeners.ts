@@ -1,8 +1,7 @@
-import DOM from "./modules/DOM";
-import Player from "./modules/player";
+import Player from "./player";
 
 const eventListeners = {
-    
+
     nameFormListener: (): Promise<Player> => {
         return new Promise((resolve, reject) => {
             const textInput = document.querySelector("#name") as HTMLInputElement;
@@ -20,10 +19,24 @@ const eventListeners = {
                 resolve(humanPlayer);
             })
         })
-        
     },
 
+    placeShipBoardListener: () => {
+        // Will accept origin to click -> place ship on that spot (V or H)
+        /*return new Promise((resolve, reject) => {
+            return
+        })*/
+        const grid = document.querySelector(".grid") as HTMLElement;
+        const cells = grid.querySelectorAll(".cell");
 
+        cells.forEach((cell) => {  // Will log each spot that is clicked
+            cell.addEventListener('click', (event) => {
+                event.preventDefault();
+                const cellID = cell.id
+                console.log(cellID);
+            })
+        })
+    },
 }
 
 export default eventListeners
