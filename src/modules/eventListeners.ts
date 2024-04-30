@@ -33,7 +33,16 @@ const eventListeners = {
             cell.addEventListener('click', (event) => {
                 event.preventDefault();
                 const cellID = cell.id
-                console.log(cellID);
+                const row = cellID[0];
+                const col = cellID[2];
+                console.log(row);
+                console.log(col);
+
+                let shipsToPlace = ['carrier', 'battleship', 'submarine', 'destroyer', 'cruiser'];
+
+                if (shipsToPlace.length > 0) {
+                    //
+                }
             })
         })
     },

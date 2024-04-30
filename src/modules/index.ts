@@ -1,26 +1,24 @@
 import './styles/styles.scss';
 
-import DOM from "./DOM"; // Static DOM only
+import render from "./DOM"; // Static DOM only
 import eventListeners from "./eventListeners"; // Interactive 
 import Player from './player';
 
-const title = DOM.createH1('Battleship', 'title');
-const nameForm = DOM.nameForm("Enter your name!");
-const grids = DOM.gameArea(10, "player", "computer");
-const controls = DOM.gameControls();
+const title = render.createH1('Battleship', 'title');
+const nameForm = render.nameForm("Enter your name!");
+const grids = render.gameArea(10, "player", "computer");
+const controls = render.gameControls();
 
-DOM.appendComponent(title);
-DOM.appendComponent(nameForm);
-DOM.appendComponent(grids);
-DOM.appendComponent(controls);
+render.appendComponent(title);
+render.appendComponent(nameForm);
 
-
-eventListeners.placeShipBoardListener();
-
+//eventListeners.placeShipBoardListener();
 
 eventListeners.nameFormListener().then((humanPlayer) => {
     console.log(humanPlayer);
-
+    render.removeNameForm();
+    render.appendComponent(grids);
+    render.appendComponent(controls);
 
 
 }).catch((error) => {

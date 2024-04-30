@@ -92,10 +92,12 @@ body {
 .grid {
     grid-column-gap: 0px;
     grid-row-gap: 0px;
+    filter: drop-shadow(15px 15px black); 
 
     div {
         padding: 1.5em;
         border: 1px $dark-text-color solid;
+        background-color: #22223b;
     }
 
     .cell:hover {
@@ -114,6 +116,7 @@ body {
     flex-direction: row;
     align-items: baseline;
     justify-content: center;
+    margin-top: 2em;
 
     label {
         margin-right: 10px;

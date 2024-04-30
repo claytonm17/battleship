@@ -39,6 +39,11 @@ const DOM = {
         return container;
     },
 
+    removeNameForm: () => { // After submit
+        const container = document.querySelector(".form-container");
+        container.remove();
+    },
+
     createGrid: (size: number, name: string) => {
         const grid = document.createElement('div');
         grid.className = "grid";
@@ -91,6 +96,12 @@ const DOM = {
         const container = document.createElement('form');
         container.className = "controls";
 
+        const origin = document.createElement('input');
+        origin.type = "text";
+        origin.maxLength = 2;
+        origin.placeholder = "A1";
+        origin.width = 10;
+
         const orientationH = document.createElement('input');
         orientationH.type = "radio";
         orientationH.value = "horizontal";
@@ -113,6 +124,7 @@ const DOM = {
         submitButton.type = "submit";
         submitButton.value = "Place Ship";
 
+        container.appendChild(origin);
         container.appendChild(orientationH);
         container.appendChild(labelH);
         container.appendChild(orientationV);
@@ -120,14 +132,11 @@ const DOM = {
         container.appendChild(submitButton);
 
         return container;
-        },
-
-    gridHit: (spot: string, name: string) => {
-        const grid = document.querySelector(`#${name}`);
-
     },
 
+    renderGrid: () => {
 
+    }
 }
 
 export default DOM;
