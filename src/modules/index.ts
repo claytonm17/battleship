@@ -20,6 +20,27 @@ eventListeners.nameFormListener().then((humanPlayer) => {
     render.appendComponent(grids);
     render.appendComponent(controls);
 
+    humanPlayer.createBattleship([0,0], "V");
+
+    let selectedCellID = null;
+
+    const grid = document.querySelector("#player");
+    grid.addEventListener('click', (event) => {
+        const cell = event.target as HTMLElement;
+        selectedCellID = (cell.id).split('-');
+
+        console.log(selectedCellID);
+    });
+
+    const controlPanel = document.querySelector(".controls");
+    controlPanel.addEventListener('submit', (event) => {
+        
+        if (selectedCellID) {
+
+            //humanPlayer.createBattleship(selectedCellID)
+        }
+    })
+
 
 }).catch((error) => {
     console.log(`Error: ${error}`);
